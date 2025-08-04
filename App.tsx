@@ -1,0 +1,23 @@
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Room from './pages/Room';
+import { SocketProvider } from './context/SocketContext';
+import { UserProvider } from './context/UserContext';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <UserProvider>
+        <SocketProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/room/:roomId" element={<Room />} />
+          </Routes>
+        </SocketProvider>
+      </UserProvider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
